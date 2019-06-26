@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+    db:
+        image: mysql
+        ports:
+            - "3307:3306"
+        volumes:
+            - /home/<user name>/dockofony-mysql:/var/lib/mysql
+        environment:
+            MYSQL_ROOT_PASSWORD: password
+            MYSQL_DATABASE: symfony
+            MYSQL_USER: symfony
+            MYSQL_PASSWORD: password
+    phpapache:
+        build: ./phpapache
+        ports:
+            - "80:80"
+            - "443:443"
+        volumes:
+            - ./symfony:/var/www/html
+        links:
+            - db
