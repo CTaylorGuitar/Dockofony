@@ -15,7 +15,6 @@ services:
         build: ./phpapache
         ports:
             - "8080:80"
-            - "443:443"
         volumes:
             - ./symfony:/var/www/html
         links:
