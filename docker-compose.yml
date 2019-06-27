@@ -1,7 +1,7 @@
 version: '3.7'
 services:
     db:
-        image: mysql
+        image: mysql:5.7
         ports:
             - "3307:3306"
         volumes:
@@ -10,11 +10,11 @@ services:
             MYSQL_ROOT_PASSWORD: password
             MYSQL_DATABASE: symfony
             MYSQL_USER: symfony
-            MYSQL_PASSWORD: password
+            MYSQL_PASSWORD: symfony
     phpapache:
         build: ./phpapache
         ports:
-            - "8080:80"
+            - "8081:80"
         volumes:
             - ./symfony:/var/www/html
         links:
