@@ -3,9 +3,9 @@ services:
     db:
         image: mysql:5.7
         ports:
-            - "3307:3306"
+            - "${DB_HOST_PORT}:3306"
         volumes:
-            - /home/<user name>/dockofony-mysql:/var/lib/mysql
+            - ${MYSQL_VOLUME}:/var/lib/mysql
         environment:
             MYSQL_ROOT_PASSWORD: password
             MYSQL_DATABASE: symfony
@@ -14,7 +14,7 @@ services:
     phpapache:
         build: ./phpapache
         ports:
-            - "8081:80"
+            - "${PHPAPACHE_HOST_PORT}:80"
         volumes:
             - ./symfony:/var/www/html
         links:
