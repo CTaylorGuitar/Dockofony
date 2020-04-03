@@ -18,3 +18,4 @@ RUN apt-get install -y git
 RUN apt-get install -y default-mysql-client
 RUN apt-get install zip unzip
 RUN apt-get install nano
+RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
