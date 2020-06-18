@@ -12,7 +12,10 @@ services:
             MYSQL_USER: symfony
             MYSQL_PASSWORD: symfony
     phpapache:
-        build: ./phpapache
+        build:
+            context: ./phpapache
+            args:
+                - INSTALL_INTL=${PHP_INSTALL_INTL}
         ports:
             - "${PHPAPACHE_HOST_PORT}:80"
         volumes:

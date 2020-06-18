@@ -20,3 +20,14 @@ RUN apt-get install -y default-mysql-client
 RUN apt-get install zip unzip
 RUN apt-get install nano
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+
+###########################################################################
+# Human Language and Character Encoding Support:
+###########################################################################
+ARG INSTALL_INTL=false
+RUN if [ ${INSTALL_INTL} = true ]; then \
+    # Install intl and requirements
+    apt-get install -y zlib1g-dev libicu-dev g++ && \
+    docker-php-ext-configure intl && \
+    docker-php-ext-install intl \
+;fi
