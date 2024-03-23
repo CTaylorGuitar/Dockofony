@@ -1,24 +1,23 @@
-version: '3.7'
 services:
-    db:
-        image: mysql:5.7
-        ports:
-            - "${DB_HOST_PORT}:3306"
-        volumes:
-            - ${MYSQL_VOLUME}:/var/lib/mysql
-        environment:
-            MYSQL_ROOT_PASSWORD: password
-            MYSQL_DATABASE: symfony
-            MYSQL_USER: symfony
-            MYSQL_PASSWORD: symfony
-    phpapache:
-        build:
-            context: ./phpapache
-            args:
-                - INSTALL_INTL=${PHP_INSTALL_INTL}
-        ports:
-            - "${PHPAPACHE_HOST_PORT}:80"
-        volumes:
-            - ./symfony:/var/www/html
-        links:
-            - db
+  symfony:
+    build:
+      context: ./service_symfony
+      args:
+        - XDEBUG=${XDEBUG}
+    ports:
+      - "${PORT_SYMFONY}:80"
+    volumes:
+      - ${VOLUME_SYMFONY}:/var/www/html
+  db:
+    image: mariadb:10.4
+    volumes:
+      - ${VOLUME_DB}:/var/lib/mysql:Z
+    environment:
+      - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
+      - MARIADB_USER=${MARIADB_USER}
+      - MARIADB_PASSWORD=${MARIADB_PASSWORD}
+      - MARIADB_DATABASE=${MARIADB_DATABASE}
+  adminer:
+    image: adminer
+    ports:
+      - ${PORT_ADMINER}:8080

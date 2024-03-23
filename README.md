@@ -1,9 +1,8 @@
 # Dockofony
-A very primitive method of running Symfony from inside Docker containers.  
+Run Symfony inside Docker containers.  Useful for local development of a Symfony project.
 
 ## Instructions
-1. Place your symfony source files inside the symfony folder.
-1. In docker-compose.yml set the passwords and a database name.
-1. Rename .env.sample to .env and set host port numbers for each container and a path for the mysql files.
-1. Run `docker-compose up`
-1. The application should be available at http://localhost including a port number if applicable.
+1. Copy `.env.sample` to `.env`
+1. Provide a value for `VOLUME_SYMFONY` and `VOLUME_DB` in `.env`. `VOLUME_SYMFONY` is the path to your Symfony project.
+1. Run `docker-compose up --build`
+1. The Symfony application should be available at http://localhost:8089 and the Adminer database browser at http://localhost:8087
