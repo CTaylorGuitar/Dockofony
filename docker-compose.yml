@@ -9,7 +9,7 @@ services:
     volumes:
       - ${VOLUME_SYMFONY}:/var/www/html
   db:
-    image: mariadb:10.4
+    image: mariadb:10.11.7
     volumes:
       - ${VOLUME_DB}:/var/lib/mysql:Z
     environment:
