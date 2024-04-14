@@ -25,6 +25,7 @@ RUN apt-get update \
         wkhtmltopdf \
         libssh2-1 \
         libssh2-1-dev \
+        libicu-dev \
     && rm -rf /var/lib/apt/lists/*sdf
 
 RUN a2enmod rewrite && service apache2 restart
@@ -32,6 +33,8 @@ RUN a2enmod rewrite && service apache2 restart
 RUN docker-php-ext-install mysqli pdo pdo_mysql
 
 RUN pecl install ssh2-1.3.1 && docker-php-ext-enable ssh2
+
+RUN docker-php-ext-configure intl && docker-php-ext-install intl
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 
