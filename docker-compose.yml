@@ -5,7 +5,7 @@ services:
       args:
         - XDEBUG=${XDEBUG}
     ports:
-      - "${PORT_SYMFONY}:80"
+      - "${PORT_SYMFONY_HOST}:${PORT_SYMFONY_CONTAINER}"
     volumes:
       - ${VOLUME_SYMFONY}:/var/www/html
   db:
