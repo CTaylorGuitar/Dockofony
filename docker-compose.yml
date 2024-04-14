@@ -4,10 +4,6 @@ services:
       context: ./service_web
       args:
         - XDEBUG=${XDEBUG}
-    ports:
-      - "${PORT_WEB_HOST}:${PORT_WEB_CONTAINER}"
-    volumes:
-      - ${VOLUME_WEB}:/var/www/html
   db:
     image: mariadb:10.11.7
     volumes:
