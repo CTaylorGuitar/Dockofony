@@ -1,13 +1,9 @@
 services:
-  symfony:
+  web:
     build:
-      context: ./service_symfony
+      context: ./service_web
       args:
         - XDEBUG=${XDEBUG}
-    ports:
-      - "${PORT_SYMFONY}:80"
-    volumes:
-      - ${VOLUME_SYMFONY}:/var/www/html
   db:
     image: mariadb:10.11.7
     volumes:
