@@ -1,4 +1,5 @@
-FROM php:8.2.14-apache
+ARG PHP_IMAGE_TAG=latest
+FROM php:${PHP_IMAGE_TAG}
 
 COPY ./000-default.conf  /etc/apache2/sites-available
 
