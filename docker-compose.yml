@@ -1,4 +1,7 @@
 services:
+  ci2_php56:
+    build:
+      context: ./ci2_php56
   web:
     build:
       context: ./service_web
