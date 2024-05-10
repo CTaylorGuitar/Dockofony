@@ -1,4 +1,9 @@
 services:
+  ci2_php56:
+    ports:
+      - "${PORT_WEB_HOST}:${PORT_WEB_CONTAINER}"
+    volumes:
+      - ${VOLUME_WEB}:/var/www/html
   web:
     ports:
       - "${PORT_WEB_HOST}:${PORT_WEB_CONTAINER}"

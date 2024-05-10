@@ -1,9 +1,13 @@
 services:
+  ci2_php56:
+    build:
+      context: ./ci2_php56
   web:
     build:
       context: ./service_web
       args:
         - XDEBUG=${XDEBUG}
+        - PHP_IMAGE_TAG=${PHP_IMAGE_TAG}
   db:
     image: mariadb:10.11.7
     volumes:
