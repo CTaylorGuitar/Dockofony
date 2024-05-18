@@ -11,6 +11,7 @@ RUN apt-get update \
         libssh2-1 \
         libssh2-1-dev \
         libicu-dev \
+        acl \
     && rm -rf /var/lib/apt/lists/*sdf
 
 RUN a2enmod rewrite && service apache2 restart
