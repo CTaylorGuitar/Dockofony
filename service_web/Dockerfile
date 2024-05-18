@@ -1,4 +1,4 @@
-ARG PHP_IMAGE_TAG=latest
+ARG PHP_IMAGE_TAG=changeme
 FROM php:${PHP_IMAGE_TAG}
 
 COPY ./000-default.conf  /etc/apache2/sites-available
