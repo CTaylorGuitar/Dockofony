@@ -1,13 +1,16 @@
 services:
-  ci2_php56:
-    build:
-      context: ./ci2_php56
+
+  # ci2_php56:
+  #   build:
+  #     context: ./ci2_php56
+
   web:
     build:
       context: ./service_web
       args:
         - XDEBUG=${XDEBUG}
         - PHP_IMAGE_TAG=${PHP_IMAGE_TAG}
+
   db:
     image: mariadb:10.11.7
     volumes:
@@ -17,6 +20,7 @@ services:
       - MARIADB_USER=${MARIADB_USER}
       - MARIADB_PASSWORD=${MARIADB_PASSWORD}
       - MARIADB_DATABASE=${MARIADB_DATABASE}
+
   adminer:
     image: adminer
     ports:
