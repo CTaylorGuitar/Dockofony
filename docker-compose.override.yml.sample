@@ -6,6 +6,10 @@ services:
     volumes:
       - ${VOLUME_WEB}:/var/www/html
 
+  db:
+    ports:
+      - "${PORT_DB_HOST}:3306"
+
   web:
     ports:
       - "${PORT_WEB_HOST}:80"
