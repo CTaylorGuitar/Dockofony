@@ -17,3 +17,9 @@ Run with the local development server
 ```
 php spark serve --host 0.0.0.0 --port <service web host port>
 ```
+
+## Scaffold a CakePHP project
+```
+cd cakephp-scaffold
+clear && ./scaffold.sh ~/act/repos/project-deployments <mysql user> <mysql user pass> 127.0.0.1 <mysql host port> <db name>
+```
