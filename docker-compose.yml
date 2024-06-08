@@ -1,10 +1,10 @@
 services:
 
-  # ci2_php56:
-  #   build:
-  #     context: ./ci2_php56
-
   web:
+    ports:
+      - "${PORT_WEB_HOST}:80"
+    volumes:
+      - ${VOLUME_WEB}:/var/www/html
     build:
       context: ./service_web
       args:
@@ -15,6 +15,8 @@ services:
     image: mariadb:10.11.7
     volumes:
       - ${VOLUME_DB}:/var/lib/mysql:Z
+    ports:
+      - "${PORT_DB_HOST}:3306"
     environment:
       - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD}
       - MARIADB_USER=${MARIADB_USER}
@@ -25,3 +27,13 @@ services:
     image: adminer
     ports:
       - ${PORT_ADMINER}:8080
+
+  phpmyadmin:
+    depends_on:
+      - db
+    image: phpmyadmin
+    ports:
+      - "${PORT_PHPMYADMIN}:80"
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
