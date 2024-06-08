@@ -23,7 +23,7 @@ RUN docker-php-ext-configure intl && docker-php-ext-install intl
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 # See https://hub.docker.com/_/php Changing DocumentRoot
-ENV DOC_ROOT /var/www/html/public_html
+ENV DOC_ROOT /var/www/html/public
 RUN sed -ri -e 's!/var/www/html!${DOC_ROOT}!g' /etc/apache2/sites-available/*.conf
 RUN sed -ri -e 's!/var/www/!${DOC_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
