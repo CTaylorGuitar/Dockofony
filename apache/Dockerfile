@@ -1,5 +1,5 @@
-ARG PHP_IMAGE_TAG=CHANGEME
-FROM php:${PHP_IMAGE_TAG}
+ARG PHP_APACHE_TAG=CHANGEME
+FROM php:${PHP_APACHE_TAG}
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends \
