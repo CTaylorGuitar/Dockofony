@@ -10,6 +10,7 @@ services:
       args:
         - XDEBUG=${XDEBUG}
         - PHP_APACHE_TAG=${PHP_APACHE_TAG}
+        - DOC_ROOT=${DOC_ROOT}
 
   db:
     image: mariadb:10.11.7
