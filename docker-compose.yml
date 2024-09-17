@@ -9,7 +9,7 @@ services:
       context: ./apache
       args:
         - XDEBUG=${XDEBUG}
-        - PHP_IMAGE_TAG=${PHP_IMAGE_TAG}
+        - PHP_APACHE_TAG=${PHP_APACHE_TAG}
 
   db:
     image: mariadb:10.11.7
