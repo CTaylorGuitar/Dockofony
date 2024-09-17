@@ -1,10 +1,10 @@
 services:
 
-  web:
+  apache:
     ports:
-      - "${PORT_WEB_HOST}:80"
+      - "${PORT_APACHE_HOST}:80"
     volumes:
-      - ${VOLUME_WEB}:/var/www/html
+      - ${VOLUME_APACHE}:/var/www/html
     build:
       context: ./apache
       args:
