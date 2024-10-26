@@ -1,15 +1,16 @@
 services:
 
-  web:
+  apache:
     ports:
-      - "${PORT_WEB_HOST}:80"
+      - "${PORT_APACHE_HOST}:80"
     volumes:
-      - ${VOLUME_WEB}:/var/www/html
+      - ${VOLUME_APACHE}:/var/www/html
     build:
-      context: ./service_web
+      context: ./apache
       args:
         - XDEBUG=${XDEBUG}
-        - PHP_IMAGE_TAG=${PHP_IMAGE_TAG}
+        - PHP_APACHE_TAG=${PHP_APACHE_TAG}
+        - DOC_ROOT=${DOC_ROOT}
 
   db:
     image: mariadb:10.11.7
@@ -37,3 +38,4 @@ services:
     environment:
       PMA_HOST: db
       MYSQL_ROOT_PASSWORD: ${MARIADB_ROOT_PASSWORD}
+      UPLOAD_LIMIT: 300M
