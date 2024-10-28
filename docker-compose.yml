@@ -5,12 +5,13 @@ services:
       - "${PORT_APACHE_HOST}:80"
     volumes:
       - ${VOLUME_APACHE}:/var/www/html
+    environment:
+      - DOC_ROOT=${DOC_ROOT}
     build:
       context: ./apache
       args:
         - XDEBUG=${XDEBUG}
         - PHP_APACHE_TAG=${PHP_APACHE_TAG}
-        - DOC_ROOT=${DOC_ROOT}
 
   db:
     image: mariadb:10.11.7
