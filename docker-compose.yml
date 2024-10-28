@@ -2,7 +2,7 @@ services:
 
   apache:
     ports:
-      - "${PORT_APACHE_HOST}:${PORT_APACHE_CONTAINER}"
+      - ${PORT_APACHE_HOST}:${PORT_APACHE_CONTAINER}
     volumes:
       - ${VOLUME_APACHE}:/var/www/html
     environment:
