@@ -12,6 +12,8 @@ RUN apt-get update \
         libssh2-1-dev \
         libicu-dev \
         acl \
+        certbot \
+        python3-certbot-apache \
     && rm -rf /var/lib/apt/lists/*sdf
 
 RUN a2enmod rewrite && service apache2 restart
